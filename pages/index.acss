@@ -1,0 +1,123 @@
+@import "../templates/share.acss";
+
+page{
+  padding-top: 830rpx;
+  width: 100vw;
+  min-height: 100rpx;
+  background:url("http://static.iflyyy.com/images/wst/bg.png") no-repeat #4563fa;
+  background-size: 750rpx 956rpx;
+  background-position: top center;
+}
+.form{
+	padding: 0 30rpx;
+  padding-bottom: 160rpx;
+}
+.form-submit{
+	width: 610rpx;
+	background-color:#fff;
+	border-radius: 20rpx;
+	padding: 40rpx;
+}
+.form-head{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.input{
+	width: 560rpx;
+	height: 88rpx;
+	border-radius: 12rpx;
+	background-color:#f2f2f2;
+	padding: 0 30rpx;
+	font-size: 30rpx;
+}
+.disable{
+  color:#999;
+}
+.input-place{
+	color:#999;
+}
+.cell {
+	margin-bottom: 10rpx;
+}
+.label{
+	height:70rpx;
+	line-height: 70rpx;
+	font-size: 30rpx;
+	padding-left: 30rpx;
+}
+.btn{
+	width: 610rpx;
+	height:90rpx;
+	line-height: 90rpx;
+	background: linear-gradient(to right, #4564fe , #658cff);
+	color:#fff;
+	border-radius: 10rpx;
+	text-align: center;
+	font-size: 36rpx;
+}
+button[disabled][type=primary]{
+	background: linear-gradient(to right, #4564fe , #658cff);
+  opacity:0.6;
+}
+.close-wrap{
+	display: flex;
+	justify-content: flex-end;
+	padding: 0 20rpx 30rpx 0;
+}
+.close{
+	right: 20rpx;
+	width: 44rpx;
+	height: 44rpx;
+}
+
+
+.action-sheet{
+  background-color:#fff;
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+.action{
+  height: 88rpx;
+  border-bottom: 1px solid #f2f2f2;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color:#000;
+}
+.cancel{
+  border-top: 10rpx solid #f2f2f2;
+  text-align: center;
+  line-heighT:88rpx;
+  height:88rpx;
+  font-size: 32rpx;
+}
+
+.errmsg{
+  height: 60rpx;
+  background-color:#e02124;
+  color:#fff;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+  position: fixed;
+  top:0;
+  left:0;
+  right: 0;
+}
+
+.form-head button{
+  font-size: 30rpx;
+  background-color:#fff;
+  padding-left: 0;
+  padding-right: 0;
+  display: inline-block;
+}
+
+.form-head button::after{
+  border: none;
+}
+

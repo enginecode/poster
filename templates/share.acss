@@ -1,0 +1,68 @@
+/*弹窗*/
+.layer{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0, 0.7);
+  z-index: 999;
+}
+
+/*分享*/
+.share-box{
+  height: 392rpx;
+  background-color:#fff;
+}
+.box-title{
+  height: 70rpx;
+  padding: 0 30rpx;
+  background-color: #f2f2f2;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 70rpx;
+}
+.box-content{
+  display: flex;
+  justify-content: center;
+  font-size: 28rpx;
+  height: 100%;
+  align-items: center;
+}
+
+.qrod{
+  height: 1040rpx;
+  background-color:#fff;
+}
+.up-dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.box-content view{
+  text-align: center;
+}
+.icon86{
+  width:86rpx;
+  height:86rpx;
+}
+
+button[plain]{
+  border: none;
+}
+
+.tips{
+  position: fixed;
+  top: 0;
+  height: 60rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 60rpx;
+  background-color: rgba(224, 46, 36, 0.7);
+  color: #fff;
+  z-index:999;
+}

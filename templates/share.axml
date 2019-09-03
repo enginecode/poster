@@ -1,0 +1,33 @@
+<template name="share">
+  <view class="share-box">
+    <view class="box-title" catchTap="cancelBox">
+      <view>邀请好友助力</view>
+    </view>
+    <view class="box-content">
+      <view class="marginTopf20"  style="width:315rpx;">
+        <button open-type="share" plain="true" style="height:150rpx;border:none;display: flex;align-items: center;flex-direction: column;justify-content: space-between;">
+          <view class="icon86"><image src="/images/share.png" class="icon86"></image></view>
+          <view style="line-height:1.5;font-size:28rpx;color:#151515;">邀请好友</view>
+        </button>
+      </view>
+      <view style="width:315rpx;height:150rpx;border:none;display: flex;align-items: center;flex-direction: column;justify-content: space-between;" catchTap="product" class="marginTopf20">
+        <view class="icon86"><image src="/images/share-friend.png" class="icon86"></image></view>
+        <view style="line-height:1.5;font-size:28rpx;color:#151515;">生成专属图片</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="share-friend">
+  <view class="qrod">
+    <view class="box-title">
+      <view>生成专属图片</view>
+    </view>
+    <view style="height:800rpx;display:flex;align-items:center;justify-content:center;">
+      <image catchTap="previewImg" data-src="{{shareUrl}}" src="{{shareUrl}}" mode="aspectFit" style="width:420rpx;height:700rpx;box-shadow:0px 6px 10px rgba(0,0,0,0.1);"></image>
+    </view>
+    <view a:if="{{fileAuth}}" catchTap="saveImg" style="width:560rpx;margin:0 auto 20rpx;background: linear-gradient(to right, #4564fe , #658cff);border-radius:6rpx;height:88rpx;line-height:88rpx;text-align:center;color:#fff;font-size:36rpx;">保存图片</view>
+    <view a:else catchTap="openSetting" style="width:560rpx;margin:0 auto 40rpx;background-color:#00cc56;border-radius:6rpx;height:88rpx;line-height:88rpx;text-align:center;color:#fff;font-size:36rpx;">微信授权</view>
+    <view style="font-size:28rpx;color:#999;text-align:center;line-height: 1;">保存图片到本地，也可以点击放大然后长按图片发送好友</view>
+  </view>
+</template>

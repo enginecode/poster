@@ -1,0 +1,111 @@
+<import src="/templates/share.axml" />
+
+<view catchTap="rules" style="position: absolute;top:540rpx;right:48rpx;width:94rpx;height:103rpx;">
+  <image src="/images/oneyear/rules.png" style="width:100%;height:100%;display:block;"></image>
+</view>
+<view>
+	<view class="form">
+		<template data="{{defaultAvatar, avatar, has_submit, is_edit, disabled}}" is="form-submit"/>
+	</view>
+</view>
+<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange"></mp-tabbar>
+
+<!-- 上传 -->
+<template name="form-submit">
+	<form onSubmit="formSubmit" onReset="formReset">
+		<view class="form-submit">
+			<view class="cell">
+				<view class="label form-head">
+					<view>代言人照片</view>
+					<view a:if="{{has_submit && !is_edit}}" style="width:80rpx;height: 100%;text-align: center;" catchTap="edit">修改</view>
+					<view a:if="{{is_edit}}" style="width:80rpx;height: 100%;">
+            <button form-type="submit"  style="color:#078bff;width:80rpx;height: 100%;line-height: 70rpx;">完成</button>
+          </view>
+				</view>
+				<view style="display: flex;justify-content: center;">
+					<view a:if="{{!avatar}}" catchTap="chooseImg" style="width:348rpx;height:348rpx;border-radius:50%;">
+				        <view style="display:flex;align-items:center;flex-direction:column;justify-content:center;position:relative;">
+				        	<image src="{{defaultAvatar}}" onError="imgError" style="width:348rpx;height:348rpx;border-radius:50%;"></image>
+				          
+	          				<view style="position:absolute;bottom:-10rpx;left:0;right:0;height:60rpx;display:flex;align-items:center;justify-content:center;">
+                    	  		<view style="width:224rpx;height:58rpx;font-size:32rpx;color:#fff;border-radius:50rpx;background-color:#4563fa;text-align:center;line-height:58rpx;">点击拍摄</view>
+		          	    	</view>
+		            	</view>
+				    </view>
+
+				    <view a:elif="{{avatar && is_edit}}" catchTap="chooseImg" style="width:348rpx;height:348rpx;border-radius:50%;">
+				        <view style="display:flex;align-items:center;flex-direction:column;justify-content:center;position:relative;">
+				        	<image onLoad="imgLoad" onError="imgError" src="{{avatar}}" style="width:348rpx;height:348rpx;border-radius:50%;"></image>
+
+    	                    <view style="position:absolute;bottom:-10rpx;left:0;right:0;height:60rpx;display:flex;align-items:center;justify-content:center;">
+                    			<view style="width:224rpx;height:58rpx;font-size:32rpx;color:#fff;border-radius:50rpx;background-color:#4563fa;text-align:center;line-height:58rpx;">重新拍摄</view>
+                    		</view>
+		            	</view>
+				    </view>
+
+				    <view a:elif="{{avatar}}" data-src="{{avatar}}" catchTap="previewImg" style="width:348rpx;height:348rpx;border-radius:50%;">
+				        <view style="display:flex;align-items:center;flex-direction:column;justify-content:center;position:relative;">
+				        	<image onLoad="imgLoad" onError="imgError" src="{{avatar}}" style="width:348rpx;height:348rpx;border-radius:50%;"></image>
+		            	</view>
+				    </view>
+				</view>
+			</view>
+			<view style="height: 20rpx;"></view>
+			<view class="cell">
+				<view class="label">代言人昵称</view>
+				<view>
+					<input class="input {{disabled ? 'disable' : ''}}" name="nickname" value="{{post.nickname}}" disabled="{{has_submit && !is_edit}}" placeholder="请输入代言人的昵称" placeholder-class="input-place" type="text" />
+				</view>
+			</view>
+			<view class="cell">
+				<view class="label">代言人年龄</view>
+				<view>
+					<input class="input {{disabled ? 'disable' : ''}}" name="age" value="{{post.age}}" placeholder="请输入代言人的年龄" disabled="{{has_submit && !is_edit}}" placeholder-class="input-place" type="number" maxlength="3" />
+				</view>
+			</view>
+
+			<view style="height: 40rpx;"></view>
+			<button a:if="{{!has_submit}}" class="btn" form-type="submit">
+				报名
+			</button>
+      <button catchTap="share" a:elif="{{has_submit && !is_edit}}" class="btn" type="primary">
+				邀请好友助力
+			</button>
+			<button a:elif="{{is_edit}}" class="btn" type="primary" disabled>
+				邀请好友助力
+			</button>
+		</view>
+	</form>
+</template>
+
+<!-- 分享 -->
+<view a:if="{{shareBox || shareFriend}}" class="layer" catchTap="close">
+  <view class="up-dialog">
+	  <view class="close-wrap" catchTap="close">
+	  	<view class="close">
+		  	<image src="/images/close.png" style="width: 100%;height: 100%;display: block;"></image>
+		  </view>
+	  </view>
+    <view catchTap="prevent">
+	  <template a:if="{{shareBox}}" is="share" />
+	  <template a:if="{{shareFriend}}" is="share-friend" data="{{shareUrl: shareUrl, fileAuth}}"/>
+    </view>
+  </view>
+</view>
+
+<view style="background-color:#fff;position:fixed;left:100vw;">
+  <poster id="poster" bind:success="onPosterSuccess" width="{{canvasWidth}}" height="{{canvasHeight}}" url="{{qrcode_str}}" headimg="{{avatar}}" bgimg="{{canvasBg}}" nickname="{{post.nickname}}"></poster>
+</view>
+
+<view a:if="{{errmsg}}">
+  <template is="errmsg" data="{{errmsg}}"/>
+</view>
+
+
+
+<template name="errmsg">
+  <view class="errmsg">
+    {{errmsg}}
+  </view>
+</template>
+

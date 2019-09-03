@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/croper"
+  ],
+  "window": {
+    "defaultTitle": "合成海报"
+  }
+}
